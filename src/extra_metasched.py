@@ -1,12 +1,12 @@
 # coding: utf-8
-"""Extra metascheduling functions which can be called between each queue handling
-"""
+"""Extra metascheduling functions which can be called between each queue handling"""
 
-from oar.lib.globals import init_config, get_logger
+from oar.lib.globals import get_logger, init_config
 from oar.lib.models import Resource
 
 config = init_config()
 logger = get_logger("oar-plugins.custom_extra_metasched")
+
 
 def extra_metasched_default(
     db_session,
@@ -36,7 +36,7 @@ def extra_metasched_logger(
 ):
     logger.info("plugin successfully called ;)")
 
-    
+
 def extra_metasched_foo(
     db_session,
     prev_queue,

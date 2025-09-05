@@ -2,11 +2,11 @@
 import copy
 import pickle
 
-from procset import ProcInt, ProcSet
-
 import oar.kao.scheduling
+from oar.lib.globals import get_logger, init_config
 from oar.lib.hierarchy import extract_n_scattered_block_itv
-from oar.lib.globals import init_config, get_logger
+from oar.lib.models import Job
+from procset import ProcInt, ProcSet
 
 config = init_config()
 logger = get_logger("oar-plugs.custom_scheduling")
@@ -325,16 +325,18 @@ def assign_coorm(slots_set, job, hy, min_start_time, *assign_args, **assign_kwar
 
 
 # Example function
-def find_even_or_odd(itvs_avail, hy_res_rqts, hy, beginning, *assign_args, **named_params):
+def find_even_or_odd(
+    itvs_avail, hy_res_rqts, hy, beginning, *assign_args, **named_params
+):
     """
-        Given a set of available resource, find a set of resources matching the job request.
-        - itvs_available: a ProcSet of available resources
-        - hy_res_rqts: the resources description requested by the job
-        - hy: the description of the hierarchy of resources
-        - beginning: The first slot set
-        - assing_ards: optional parameters that can be given to the function
+    Given a set of available resource, find a set of resources matching the job request.
+    - itvs_available: a ProcSet of available resources
+    - hy_res_rqts: the resources description requested by the job
+    - hy: the description of the hierarchy of resources
+    - beginning: The first slot set
+    - assing_ards: optional parameters that can be given to the function
     """
-    if assign_args[0] == 'odd':
+    if assign_args[0] == "odd":
         itvs_avail = ProcSet(*[res_id for res_id in itvs_avail if res_id % 2 != 0])
     else:
         itvs_avail = ProcSet(*[res_id for res_id in itvs_avail if res_id % 2 == 0])
