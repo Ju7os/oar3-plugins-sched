@@ -3,8 +3,7 @@ name = "oar-plugins"
 version = "0.1.1"
 description = ""
 authors = [
-    "Adrien Faure <adrien.faure@protonmail.com>",
-    "Olivier Richard <olivier.richard@imag.fr>"
+    "Jules EVANS <jules.evans@irit.fr>"
 ]
 packages = [
     { include = "src" },
@@ -31,7 +30,8 @@ logger = "src.extra_metasched:extra_metasched_logger"
 foo = "src.extra_metasched:extra_metasched_foo"
 
 [tool.poetry.plugins."oar.assign_func"]
-default = "src.my_assign_funcs:assign_round_robin"
+default = "src.custom_scheduling:assign_default"
+round_robin = "src.my_assign_funcs:assign_round_robin"
 coorm = "src.custom_scheduling:assign_coorm"
 one_time_find_mld = "src.custom_scheduling:assign_one_time_find_mld"
 one_time_find = "src.custom_scheduling:assign_one_time_find"

@@ -1,11 +1,9 @@
-from procset import ProcSet
-
-from oar.kao.scheduling import schedule_id_jobs_ct, set_slots_with_prev_scheduled_jobs
+from oar.kao.scheduling import (schedule_id_jobs_ct,
+                                set_slots_with_prev_scheduled_jobs)
 from oar.kao.slot import Slot, SlotSet
-
 from oar.lib.job_handling import JobPseudo
 from oar.lib.plugins import find_plugin_function
-
+from procset import ProcSet
 
 ASSIGN_ENTRY_POINTS = "oar.assign_func"
 FIND_ENTRY_POINTS = "oar.find_func"
