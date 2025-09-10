@@ -1,5 +1,4 @@
-from oar.kao.scheduling import (schedule_id_jobs_ct,
-                                set_slots_with_prev_scheduled_jobs)
+from oar.kao.scheduling import schedule_id_jobs_ct, set_slots_with_prev_scheduled_jobs
 from oar.kao.slot import Slot, SlotSet
 from oar.lib.job_handling import JobPseudo
 from oar.lib.plugins import find_plugin_function
@@ -220,7 +219,6 @@ def test_find_local():
 
 
 def test_find_local_1():
-
     """Test if find_local assigns resource from node with less available resources"""
 
     v = [(0, 59, ProcSet(*[(1, 8), (13, 32)])), (60, 100, ProcSet(*[(1, 32)]))]
