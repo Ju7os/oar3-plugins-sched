@@ -42,14 +42,18 @@ def test_assign_round_robin():
     res = ProcSet(*[(1, 32)])
     ss = SlotSet(Slot(1, 0, 0, ProcSet(*[(1, 16), (25, 32)]), 0, 100))
     all_ss = {"default": ss}
-    hy = {"node": [ProcSet(*x) for x in [[(1, 8)], [(9, 16)], [(17, 24)], [(25, 32)]]]}
+    hy = {
+        "resource_id": [
+            ProcSet(*x) for x in [[(1, 8)], [(9, 16)], [(17, 24)], [(25, 32)]]
+        ]
+    }
 
     j3 = JobPseudo(
         id=3,
         types={},
         deps=[],
         key_cache={},
-        mld_res_rqts=[(1, 60, [([("node", 1)], res)])],
+        mld_res_rqts=[(1, 60, [([("resource_id", 1)], res)])],
     )
 
     set_assign_func(j3, "round_robin")
